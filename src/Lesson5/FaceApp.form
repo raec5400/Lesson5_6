@@ -26,16 +26,16 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanel1" max="32767" attributes="0"/>
+                  <Component id="facePanel" max="32767" attributes="0"/>
                   <Component id="setInitial" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="moveFace" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnmove" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="Resize" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnresize" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="changeColor" min="-2" max="-2" attributes="0"/>
+                      <Component id="btncolor" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="toggleMood" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnmood" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -48,13 +48,13 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="moveFace" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Resize" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="changeColor" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="toggleMood" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnmove" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnresize" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btncolor" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnmood" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <Component id="facePanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="setInitial" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
@@ -63,32 +63,41 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="moveFace">
+    <Component class="javax.swing.JButton" name="btnmove">
       <Properties>
         <Property name="text" type="java.lang.String" value="Move Face"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="Resize">
+    <Component class="javax.swing.JButton" name="btnresize">
       <Properties>
         <Property name="text" type="java.lang.String" value="Resize Face"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnresizeActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="changeColor">
+    <Component class="javax.swing.JButton" name="btncolor">
       <Properties>
         <Property name="text" type="java.lang.String" value="Change Color"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="toggleMood">
+    <Component class="javax.swing.JButton" name="btnmood">
       <Properties>
         <Property name="text" type="java.lang.String" value="Toggle Mood"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnmoodActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="setInitial">
       <Properties>
         <Property name="text" type="java.lang.String" value="Set Initial Face"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="setInitialActionPerformed"/>
+      </Events>
     </Component>
-    <Container class="javax.swing.JPanel" name="jPanel1">
+    <Container class="javax.swing.JPanel" name="facePanel">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">

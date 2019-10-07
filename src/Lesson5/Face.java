@@ -5,6 +5,7 @@ import java.awt.Graphics;
 
 public class Face {
     private int xPos, yPos, newpos, diameter, eyediam;
+    private boolean isHappy;
     private Color color, eyecol;
     private Graphics g;
     
@@ -16,15 +17,16 @@ public class Face {
         diameter=100;
         color=Color.red;
         eyecol=Color.yellow;
+        isHappy = true;
     }
     
     public void setColor(Color newface, Color neweyes){
         color = newface;
         eyecol = neweyes;
     }
-    public int Move(){
-        newpos=(int)(Math.random()*50+5);
-        newpos=(int)(Math.random()*50+5);
+    public int move(int newxpos, int newypos){
+        newxpos=(int)(Math.random()*50+5);
+        newypos=(int)(Math.random()*50+5);
         return newpos;       
     }
     public void Resize(){
@@ -35,6 +37,8 @@ public class Face {
         drawHead();
         drawEyes();
         drawMouth();
+        
+            
     }
     private void drawHead(){
         g.fillOval(xPos, yPos, diameter, diameter);
