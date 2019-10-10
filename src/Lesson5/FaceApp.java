@@ -5,6 +5,8 @@
  */
 package Lesson5;
 
+import java.awt.Color;
+import javax.swing.JColorChooser;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,13 +14,15 @@ import javax.swing.JOptionPane;
  * @author raec5400
  */
 public class FaceApp extends javax.swing.JFrame {
+
     Face f;
+
     /**
      * Creates new form FaceApp
      */
     public FaceApp() {
         initComponents();
-        f = new Face (facePanel.getGraphics(), 100, 100);
+        f = new Face(facePanel.getGraphics(), 100, 100);
     }
 
     /**
@@ -40,6 +44,11 @@ public class FaceApp extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnmove.setText("Move Face");
+        btnmove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnmoveActionPerformed(evt);
+            }
+        });
 
         btnresize.setText("Resize Face");
         btnresize.addActionListener(new java.awt.event.ActionListener() {
@@ -49,6 +58,11 @@ public class FaceApp extends javax.swing.JFrame {
         });
 
         btncolor.setText("Change Color");
+        btncolor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncolorActionPerformed(evt);
+            }
+        });
 
         btnmood.setText("Toggle Mood");
         btnmood.addActionListener(new java.awt.event.ActionListener() {
@@ -64,6 +78,7 @@ public class FaceApp extends javax.swing.JFrame {
             }
         });
 
+        facePanel.setBackground(new java.awt.Color(255, 255, 255));
         facePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout facePanelLayout = new javax.swing.GroupLayout(facePanel);
@@ -118,10 +133,9 @@ public class FaceApp extends javax.swing.JFrame {
 
     private void btnmoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmoodActionPerformed
         // TODO add your handling code here:
-        int newx = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter New X"));
-        int newy = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter New Y"));
+
         f.erase();
-        f.move(newx, newy);
+        f.toggleMood();
         f.draw();
     }//GEN-LAST:event_btnmoodActionPerformed
 
@@ -132,16 +146,34 @@ public class FaceApp extends javax.swing.JFrame {
         btnmove.setEnabled(true);
         btnresize.setEnabled(true);
         f.erase();
-        f = new Face(facePanel.getGraphics(), 50, 50);
+        f = new Face(facePanel.getGraphics(), 150, 100);
         f.draw();
     }//GEN-LAST:event_setInitialActionPerformed
 
     private void btnresizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnresizeActionPerformed
         // TODO add your handling code here:
-        int newsize = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter New diameter of face"));
+        int newsize = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter New diameter of face: "));
         f.erase();
-        f.Resize();
+        f.Resize(newsize);
+        f.draw();
     }//GEN-LAST:event_btnresizeActionPerformed
+
+    private void btnmoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmoveActionPerformed
+        // TODO add your handling code here:
+        int newx = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter New X"));
+        int newy = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter New Y"));
+        f.erase();
+        f.move(newx, newy);
+        f.draw();
+    }//GEN-LAST:event_btnmoveActionPerformed
+
+    private void btncolorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncolorActionPerformed
+        // TODO add your handling code here:
+        Color newc = JColorChooser.showDialog(this, "Pick new face color", Color.red);
+        Color newec = JColorChooser.showDialog(this, "Pick new eye color", Color.yellow);
+        f.setColor(newc, newec);
+        f.draw();
+    }//GEN-LAST:event_btncolorActionPerformed
 
     /**
      * @param args the command line arguments

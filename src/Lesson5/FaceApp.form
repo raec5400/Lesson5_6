@@ -67,6 +67,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Move Face"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnmoveActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnresize">
       <Properties>
@@ -80,6 +83,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Change Color"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btncolorActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnmood">
       <Properties>
@@ -99,6 +105,9 @@
     </Component>
     <Container class="javax.swing.JPanel" name="facePanel">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder/>

@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class Face {
-    private int xPos, yPos, newpos, diameter, eyediam;
+    private int xPos, yPos, diameter;
     private boolean isHappy;
     private Color color, eyecol;
     private Graphics g;
@@ -24,33 +24,46 @@ public class Face {
         color = newface;
         eyecol = neweyes;
     }
-    public int move(int newxpos, int newypos){
-        newxpos=(int)(Math.random()*50+5);
-        newypos=(int)(Math.random()*50+5);
-        return newpos;       
+    public void move(int newx, int newy){
+        xPos=newx;
+        yPos=newy;
+    }   
+    public void Resize(int newdi){
+        diameter= newdi;
+               
     }
-    public void Resize(){
-        
+    public boolean toggleMood(){
+        if(isHappy)
+            isHappy=false;
+        else if(isHappy==false)
+            isHappy=true;
+        return isHappy;
     }
     
     public void draw(){
         drawHead();
         drawEyes();
-        drawMouth();
-        
-            
+        if(isHappy==false){
+            g.drawLine((int)(xPos+.35*diameter), (int)(yPos+.9*diameter), (int)(xPos+.4*diameter), (int)(yPos+.85*diameter));
+            g.drawLine((int)(xPos+.4*diameter), (int)(yPos+.85*diameter), (int)(xPos+.6*diameter), (int)(yPos+.85*diameter));
+            g.drawLine((int)(xPos+.6*diameter), (int)(yPos+.85*diameter), (int)(xPos+.65*diameter), (int)(yPos+.9*diameter));
+        }
+        else drawMouth();
+                   
     }
     private void drawHead(){
+        g.setColor(color);
         g.fillOval(xPos, yPos, diameter, diameter);
     }
     private void drawEyes(){
-        g.fillOval(xPos, yPos, eyediam, eyediam);
-        g.fillOval(xPos, yPos, eyediam, eyediam);
+        g.setColor(eyecol);
+        g.fillOval((int)(xPos+0.25*diameter), (int)(yPos+0.4*diameter), (int)(diameter*.2), (int)(diameter*.2));
+        g.fillOval((int)(xPos+0.55*diameter), (int)(yPos+0.4*diameter), (int)(diameter*.2), (int)(diameter*.2));
     }
-    private void drawMouth(){
-        g.drawLine(xPos, yPos, xPos, yPos);
-        g.drawLine(xPos, yPos, xPos, yPos);
-        g.drawLine(xPos, yPos, xPos, yPos);
+    private void drawMouth(){      
+        g.drawLine((int)(xPos+.35*diameter), (int)(yPos+.8*diameter), (int)(xPos+.4*diameter), (int)(yPos+.85*diameter));
+        g.drawLine((int)(xPos+.4*diameter), (int)(yPos+.85*diameter), (int)(xPos+.6*diameter), (int)(yPos+.85*diameter));
+        g.drawLine((int)(xPos+.6*diameter), (int)(yPos+.85*diameter), (int)(xPos+.65*diameter), (int)(yPos+.8*diameter));
     }
     public void erase(){
         g.setColor(Color.white);
